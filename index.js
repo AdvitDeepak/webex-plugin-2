@@ -8,17 +8,30 @@ app.onReady().then(() => {
     log("Error with code: ", Webex.Application.ErrorCodes[errorcode])
 });
 
-// Button click handler to set share URL
-function handleSetShare() {
-    // Replace this with the URL of your shared page
-    var url = "https://www.example.com/shared.html"
-    // "Shared App" is the title of the window or tab that will be created
-    app.setShareUrl(url, "", "Shared App").then(() => {
-        log("Set share URL", url);
-    }).catch((errorcode) => {
-        log("Error: ", Webex.Application.ErrorCodes[errorcode])
-    });
+function send() {
+    fetch('http://127.0.0.1:5000/send')
+    .then(response => response.json())
+    .then((data) => {
+      let summary = data.summary 
+      let actionables = data.actionables 
+      let time = data.time 
+      let uncertainty = data.uncertainty 
+
+      let summaryContainer = document.getElementById('summaryContainer')
+      summaryContainer.innerHTML = `<div>${summary}</div>`
+      let actionablesContainer = document.getElementById('actionablesContainer')
+      actionablesContainer.innerHTML = `<div>${actionables}</div>`
+      let timeContainer = document.getElementById('timeContainer')
+      timeContainer.innerHTML = `<div>${time}</div>`
+      let uncertaintyContainer = document.getElementById('uncertaintyContainer')
+      uncertaintyContainer.innerHTML = `<div>${uncertainty}</div>`
+    })
+
+    setTimeout(send, 5000);
 }
+
+send(); 
+
 
 // Utility function to log app messages
 function log(type, data) {
