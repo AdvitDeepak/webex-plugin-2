@@ -1,27 +1,80 @@
+<!--
+  All important components in this HTML Page: 
+  - WebEx Developer ID = "webex-id"
+  - OpenAI API Key = "openai-key"
+  - Submit Button = ""
+
+
+
+-->
+
+
+
 <html>
 <head>
-    <title>WebEx NLP Plugin</title>
+    <title style="text-align:center;">WebEx NLP Plugin</title>
     <script src="https://binaries.webex.com/static-content-pipeline/webex-embedded-app/v1/webex-embedded-app-sdk.js" defer></script>
+    <script crossorigin src="https://unpkg.com/webex@^1/umd/webex.min.js"></script>
     <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 </head>
-<body>
-    <h1>WebEx + Blaze - Plugin</h1>
-    <p>This is a research version of WebEx + Blaze's Research Plugin.</p>
-    <h2>Meeting Summary</h2>
-    <body> 
-        <div id="summaryContainer"></div>
-    </body>
-    <h2>Actionables (Todo's)</h2>
-    <body>
-        <div id="actionablesContainer"></div>
-    </body>
-    <h2>Topic Discussions</h2>
-    <body> 
-        <div id="timeContainer"></div> 
-    </body>
-    <h2>Areas of Uncertainty</h2>
-    <body>
-        <div id="uncertaintyContainer"></div>
-    </body>
+
+<body style="background-color:black; padding: 1%; font-family: Quicksand">
+
+    <!-- Header -->
+
+    <div style="color:whitesmoke; justify-content:center;align-items: center;text-align: center; font-family:Quicksand"> 
+        <h1>BLAZE - WebEx Plugin</h1>
+        <p style="font-style:italic">Research edition of WebEx Plugin, powered by BLAZE. </p>
+        <div class="form-group" style="padding: 2%">
+          <input type="text" class="form-control" style="margin-bottom: 1%;" id="webex-id" placeholder="Please enter WebEx Developer ID here">
+          <input type="text" class="form-control" style="margin-bottom: 1%;" id="openai-key" placeholder="Additionally, enter OpenAI API Key here">
+
+          <div class="row" style="margin-bottom: 0%">
+            <div style="padding: 3%; margin-bottom: 0%">
+              <p  style="margin-bottom: 0%;">For more info on how to obtain these keys, visit:</p>
+              <p style="margin-bottom: 0%"><a href="https://platform.openai.com/account/api-keys">OpenAI API</a> or <a href="https://developer.webex.com/docs/getting-started">WebEx Developer ID</a></p>
+            </div>
+            <div style="padding: 3%; margin-bottom: 0%">
+              <button type="submit" class="btn btn-primary" style="margin-bottom: 0%" onclick="submitForm()">Submit</button>
+            </div>
+          </div>
+          <p style="margin-bottom: 0%; margin-top: 0%">Make sure to turn on WebEx Assistant prior to clicking Submit!</p>
+        </div>
+    </div>  
+
+
+    <!-- Summary -->
+
+    <div class="card text-white bg-dark mb-3 border-info" style="width: 100%; padding: 2%; color:whitesmoke">
+        <div class="card-body">
+          <h5 class="card-title" >Meeting Summary </h5>
+          <h6 class="card-subtitle mb-2 text-muted">A live summary of the meeting, powered by BART.</h6>
+          <div class="card-text" id="summaryContainer"> </div>
+        </div>
+      </div>
+
+    
+    <!-- Topic Discussions -->
+
+    <div class="card text-white bg-dark mb-3 border-info" style="width: 100%; padding: 2%; color:whitesmoke">
+        <div class="card-body">
+          <h5 class="card-title" >Topic Discussions </h5>
+          <h6 class="card-subtitle mb-2 text-muted">A timestamped list of points, powered by GPT-3.</h6>
+          <div class="card-text" id="timeContainer"> </div>
+        </div>
+      </div>
+
+    <!-- Actionable Items -->
+
+    <div class="card text-white bg-dark mb-3 border-info" style="width: 100%; padding: 2%; color:whitesmoke">
+        <div class="card-body">
+          <h5 class="card-title" >Actionables (Todo's) </h5>
+          <h6 class="card-subtitle mb-2 text-muted">A list of actionable items, powered by GPT-3.</h6>
+          <div class="card-text" id="actionablesContainer"> </div>
+        </div>
+      </div>
+
 </body>
 </html>
