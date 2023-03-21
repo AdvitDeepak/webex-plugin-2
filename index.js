@@ -18,7 +18,7 @@ let webex;
 let receiveTranscriptionOption;
 
 const meetingsListElm = [];
-const meetingsCurrentDetailsElm = "";
+var meetingsCurrentDetailsElm = "";
 
 var ACCESSTOKEN = "";
 
