@@ -95,9 +95,9 @@ function read() {
       let timeContainer = document.getElementById('timeContainer')
       timeContainer.innerHTML = `<div>${time}</div>`
 
-      let uncertainty = data.uncertainty 
-      let uncertaintyContainer = document.getElementById('uncertaintyContainer')
-      uncertaintyContainer.innerHTML = `<div>${uncertainty}</div>`
+    //   let uncertainty = data.uncertainty 
+    //   let uncertaintyContainer = document.getElementById('uncertaintyContainer')
+    //   uncertaintyContainer.innerHTML = `<div>${uncertainty}</div>`
     })
 
     setTimeout(function() {
